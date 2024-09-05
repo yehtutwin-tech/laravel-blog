@@ -1,0 +1,52 @@
+Day 1
+1. Routing
+    - Static Route
+    - Dynamic Route
+    - Redirect
+    - Route Name
+    - URL Pattern
+    - Resource Route
+2. Controller
+    - php artisan make:controller ArticleController
+    - Return view
+    - Send data
+3. View
+    - Blade
+    - PHP statement
+    - Echo / Output
+4. Model
+    - php artisan make:model Article -m
+    - Migration
+    - php artisan migrate
+5. Factory
+    - php artisan make:factory ArticleFactory
+    - Seeding
+    - php artisan db:seed
+6. Authentication
+    - composer require laravel/ui
+    - php artisan ui bootstrap --auth
+    - http://localhost/login
+    - http://localhost/register
+
+Day 2
+7. CRUD
+    - CSRF
+    - Validation
+    - Pagination
+    - Session
+8. Relationship
+    - php artisan make:model Category -m
+    - php artisan make:model Comment -m
+    - php artisan migrate:fresh
+    - php artisan make:factory CategoryFactory
+    - php artisan make:factory CommentFactory
+    - php artisan db:seed
+    - hasMany, belongsTo
+    - php artisan make:controller CommentController
+9. Authentication & Authorization
+    - @auth - display for only logedin user
+    - @guest - display for only not logedin user
+    - middleware
+
+Day 3
+10. Content Owner Permission
