@@ -83,7 +83,8 @@ class ArticleController extends Controller
         $article->category_id = request()->category_id;
         $article->save();
 
-        return redirect('articles');
+        return redirect('articles')
+            ->with('info', 'An article has been created!');
     }
 
     public function delete($id)
@@ -92,7 +93,6 @@ class ArticleController extends Controller
         $article->delete();
 
         return redirect('articles')
-            ->with('info', 'An article has been deleted!')
-        ;
+            ->with('info', 'An article has been deleted!');
     }
 }

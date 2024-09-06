@@ -48,6 +48,7 @@
             <button type="submit" class="btn btn-secondary">Add Comment</button>
         </form>
         @endauth
+
         @guest
             <div class="alert alert-secondary">
                 Please register/login to add comment
