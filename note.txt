@@ -55,11 +55,13 @@ Day 3
     - php artisan migrate:fresh --seed
 11. API
     - php artisan install:api
-    - php artisan make:controller API/ArticleControler
+    - php artisan make:controller API/ArticleController
     - apiResource
-    - php artisan make:controller API/ArticleControler --api
-    - php artisan make:controller API/CategoryControler --api
+    - php artisan make:controller API/ArticleController --api
+    - php artisan make:controller API/CategoryController --api
     - php artisan make:controller CategoryController -r
+
+Day 4
 12. API Authentication
 
 

@@ -1,21 +1,21 @@
 <?php
-
+// app/Http/Controllers/API/CategoryController.php
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Article;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
-class ArticleControler extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $articles = Article::all();
+        $categories = Category::all();
 
-        return response()->json($articles, 200);
+        return response()->json($categories, 200);
     }
 
     /**
@@ -26,9 +26,7 @@ class ArticleControler extends Controller
         $validator = validator(
             request()->all(),
             [
-                'title' => 'required|max:255',
-                'body' => 'required',
-                'category_id' => 'required',
+                'name' => 'required|max:255',
             ],
         );
 
@@ -39,14 +37,12 @@ class ArticleControler extends Controller
             );
         }
 
-        // create new article
-        $article = new Article();
-        $article->title = request()->title;
-        $article->body = request()->body;
-        $article->category_id = request()->category_id;
-        $article->save();
+        // create new category
+        $category = new Category();
+        $category->name = request()->name;
+        $category->save();
 
-        return response()->json($article, 201);
+        return response()->json($category, 201);
     }
 
     /**
@@ -54,16 +50,16 @@ class ArticleControler extends Controller
      */
     public function show(string $id)
     {
-        $article = Article::find($id);
+        $category = Category::find($id);
 
-        if (!$article) {
+        if (!$category) {
             return response()->json(
                 ['message' => 'Not found!'],
                 404
             );
         }
 
-        return response()->json($article, 200);
+        return response()->json($category, 200);
     }
 
     /**
@@ -71,9 +67,9 @@ class ArticleControler extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $article = Article::find($id);
+        $category = Category::find($id);
 
-        if (!$article) {
+        if (!$category) {
             return response()->json(
                 ['message' => 'Not found!'],
                 404
@@ -83,9 +79,7 @@ class ArticleControler extends Controller
         $validator = validator(
             request()->all(),
             [
-                'title' => 'required|max:255',
-                'body' => 'required',
-                'category_id' => 'required',
+                'name' => 'required|max:255',
             ],
         );
 
@@ -96,13 +90,11 @@ class ArticleControler extends Controller
             );
         }
 
-        // create new article
-        $article->title = request()->title;
-        $article->body = request()->body;
-        $article->category_id = request()->category_id;
-        $article->save();
+        // create new category
+        $category->name = request()->name;
+        $category->save();
 
-        return response()->json($article, 200);
+        return response()->json($category, 200);
     }
 
     /**
@@ -110,16 +102,16 @@ class ArticleControler extends Controller
      */
     public function destroy(string $id)
     {
-        $article = Article::find($id);
+        $category = Category::find($id);
 
-        if (!$article) {
+        if (!$category) {
             return response()->json(
                 ['message' => 'Not found!'],
                 404
             );
         }
 
-        $article->delete();
+        $category->delete();
 
         return response()->json(
             ['message' => 'Successfully Deleted!'],
