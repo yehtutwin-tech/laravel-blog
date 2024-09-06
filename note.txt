@@ -53,8 +53,14 @@ Day 3
 10. Content Owner Permission
     - modify table
     - php artisan migrate:fresh --seed
-    -
-
+11. API
+    - php artisan install:api
+    - php artisan make:controller API/ArticleControler
+    - apiResource
+    - php artisan make:controller API/ArticleControler --api
+    - php artisan make:controller API/CategoryControler --api
+    - php artisan make:controller CategoryController -r
+12. API Authentication
 
 
 
@@ -77,4 +83,15 @@ File storage
 -
 
 Middleware
+-
+
+Test
+- unit
+- feature
+- integration
+
+Design pattern
+- Repository
+
+ReponseCollection
 -

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 
@@ -20,6 +21,8 @@ Route::delete('/articles/{id}', [ArticleController::class, 'delete']);
 
 Route::post('/comments/store', [CommentController::class, 'store']);
 Route::get('/comments/delete/{id}', [CommentController::class, 'delete']);
+
+Route::resource('categories', CategoryController::class);
 
 Auth::routes();
 
