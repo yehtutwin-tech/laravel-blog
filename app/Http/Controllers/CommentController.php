@@ -21,4 +21,22 @@ class CommentController extends Controller
 
         return back();
     }
+
+    public function delete($id)
+    {
+        $comment = Comment::find($id);
+
+        if ($comment->user_id === auth()->user()->id) {
+            $comment->delete();
+
+            return back()
+                ->with('info', 'An article has been deleted!');
+        }
+        else {
+            return back()
+                ->with('error', 'Unauthorized!');
+        }
+
+        return back();
+    }
 }

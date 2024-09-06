@@ -51,6 +51,10 @@ Day 2
 
 Day 3
 10. Content Owner Permission
+    - modify table
+    - php artisan migrate:fresh --seed
+    -
+
 
 
 
@@ -59,7 +63,7 @@ API
 - Passport
 
 Authentication
-- multirole
+- multi role
 - spartie
 
 Dashboard

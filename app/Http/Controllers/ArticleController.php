@@ -63,7 +63,7 @@ class ArticleController extends Controller
         $validator = validator(
             request()->all(),
             [
-                'title' => 'required',
+                'title' => 'required|max:255',
                 'body' => 'required',
                 'category_id' => 'required',
             ],
@@ -76,7 +76,7 @@ class ArticleController extends Controller
             ;
         }
 
-        // store into db
+        // create new article
         $article = new Article();
         $article->title = request()->title;
         $article->body = request()->body;
@@ -85,6 +85,47 @@ class ArticleController extends Controller
 
         return redirect('articles')
             ->with('info', 'An article has been created!');
+    }
+
+    public function edit($id)
+    {
+        $article = Article::find($id);
+
+        $categories = Category::all();
+
+        return view(
+            'articles.edit',
+            compact('article', 'categories'),
+        );
+    }
+
+    public function update($id)
+    {
+        $validator = validator(
+            request()->all(),
+            [
+                'title' => 'required|max:255',
+                'body' => 'required',
+                'category_id' => 'required',
+            ],
+        );
+
+        if ($validator->fails()) {
+            return back()
+                ->withErrors($validator)
+                ->withInput()
+            ;
+        }
+
+        // update article
+        $article = Article::find($id);
+        $article->title = request()->title;
+        $article->body = request()->body;
+        $article->category_id = request()->category_id;
+        $article->save();
+
+        return redirect('articles')
+            ->with('info', 'An article has been updated!');
     }
 
     public function delete($id)
