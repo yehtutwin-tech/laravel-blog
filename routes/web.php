@@ -1,10 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
@@ -13,11 +14,15 @@ Route::get('/', function () {
 Route::get('/articles', [ArticleController::class, 'index']);
 Route::get('/articles/create', [ArticleController::class, 'create']);
 Route::post('/articles/store', [ArticleController::class, 'store']);
+Route::get('/articles/{id}/edit', [ArticleController::class, 'edit']);
+Route::put('/articles/{id}', [ArticleController::class, 'update']);
 Route::get('/articles/{id}', [ArticleController::class, 'show']);
 Route::delete('/articles/{id}', [ArticleController::class, 'delete']);
 
 Route::post('/comments/store', [CommentController::class, 'store']);
 Route::get('/comments/delete/{id}', [CommentController::class, 'delete']);
+
+Route::resource('categories', CategoryController::class);
 
 Auth::routes();
 

@@ -34,6 +34,9 @@
                         <li>
                             <a href="{{ url('articles') }}" class="btn btn-link">Articles</a>
                         </li>
+                        <li>
+                            <a href="{{ url('categories') }}" class="btn btn-link">Categories</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

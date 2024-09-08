@@ -19,6 +19,9 @@
                 <div class="card-body">
                     <h5 class="card-title">
                         {{ $article->title }}
+                        @auth
+                        <a href="{{ url('/articles/'.$article->id.'/edit') }}" class="btn btn-warning float-end me-2">Edit</a>
+                        @endauth
                     </h5>
                     <div class="card-subtitle mb-2 text-muted small">
                         {{ $article->created_at->diffForHumans() }}

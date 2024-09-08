@@ -23,3 +23,10 @@ Route::post('/', function() {
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
+
+use App\Http\Controllers\API\ArticleController;
+use App\Http\Controllers\API\CategoryController;
+
+// Route::get('/articles', [ArticleController::class, 'index']);
+Route::apiResource('articles', ArticleController::class);
+Route::apiResource('categories', CategoryController::class);
