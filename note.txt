@@ -66,6 +66,13 @@ Day 4
     - Sanctum
 
 13. Image Upload
+    - php artisan make:migration add_image_to_articles_table
+    -
+
+14. Muti Auth
+    - user/admin
+
+15. Schedule Command
     -
 
 
