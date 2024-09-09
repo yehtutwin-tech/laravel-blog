@@ -1,11 +1,15 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
+// User
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
-use App\Http\Controllers\HomeController;
-use Illuminate\Support\Facades\Auth;
+
+// Admin
+use App\Http\Controllers\Admin\DashboardController;
 
 Route::get('/', function () {
     // return view('welcome');
@@ -27,7 +31,9 @@ Route::resource('categories', CategoryController::class);
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('user.dashboard');
+
+Route::get('/admin', [DashboardController::class, 'index'])->middleware(['auth', 'admin'])->name('admin.dashboard');
 
 // // Static route
 // Route::get('/articles', function () {

@@ -68,12 +68,20 @@ Day 4
 13. Image Upload
     - php artisan make:migration add_image_to_articles_table
     - php artisan storage:link
+    (tbc => image preview, muti upload)
 
 14. Muti Auth
     - user/admin
+    - php artisan make:migration add_role_to_users_table
+    - php artisan make:controller Admin/DashboardController
+    - php artisan make:middleware Admin
+    (tbc => spartie - https://spatie.be/)
 
 15. Schedule Command
     -
+
+16. Test Case
+    - Unit/Feature/Integration
 
 
 
