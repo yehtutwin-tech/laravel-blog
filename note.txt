@@ -67,7 +67,7 @@ Day 4
 
 13. Image Upload
     - php artisan make:migration add_image_to_articles_table
-    -
+    - php artisan storage:link
 
 14. Muti Auth
     - user/admin

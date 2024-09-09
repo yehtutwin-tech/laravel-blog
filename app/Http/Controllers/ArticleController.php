@@ -66,6 +66,8 @@ class ArticleController extends Controller
                 'title' => 'required|max:255',
                 'body' => 'required',
                 'category_id' => 'required',
+                // max size 1MB
+                'image' => 'image|mimes:jpg,jpeg,png|max:1024',
             ],
         );
 
@@ -81,6 +83,14 @@ class ArticleController extends Controller
         $article->title = request()->title;
         $article->body = request()->body;
         $article->category_id = request()->category_id;
+
+        if (request()->hasFile('image')) {
+            $file = request()->file('image');
+            $file_name = time() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('articles', $file_name, 'public');
+            $article->image = $file_name;
+        }
+
         $article->save();
 
         return redirect('articles')
@@ -107,6 +117,8 @@ class ArticleController extends Controller
                 'title' => 'required|max:255',
                 'body' => 'required',
                 'category_id' => 'required',
+                // max size 1MB
+                'image' => 'image|mimes:jpg,jpeg,png|max:1024',
             ],
         );
 
@@ -122,6 +134,14 @@ class ArticleController extends Controller
         $article->title = request()->title;
         $article->body = request()->body;
         $article->category_id = request()->category_id;
+
+        if (request()->hasFile('image')) {
+            $file = request()->file('image');
+            $file_name = time() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('articles', $file_name, 'public');
+            $article->image = $file_name;
+        }
+
         $article->save();
 
         return redirect('articles')

@@ -11,7 +11,7 @@
                 </ol>
             </div>
         @endif
-        <form action="{{ url('/articles/'.$article->id) }}" method="POST">
+        <form action="{{ url('/articles/'.$article->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mb-2">
@@ -34,6 +34,11 @@
                         </option>
                     @endforeach
                 </select>
+            </div>
+            <div class="mb-2">
+                <label>Image</label>
+                <input type="file" name="image" class="form-control" accept="image/*" />
+                <img src="{{ Storage::url('articles/'.$article->image) }}" width="100" />
             </div>
             <div class="mb-2">
                 <button type="submit" class="btn btn-primary">Update</button>
