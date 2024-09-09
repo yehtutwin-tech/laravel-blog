@@ -8,7 +8,8 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return redirect('/articles');
 });
 
 Route::get('/articles', [ArticleController::class, 'index']);
