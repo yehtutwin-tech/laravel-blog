@@ -3,22 +3,60 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function register()
+    public function register(Request $request)
     {
-        return 'register';
+        $fields = $request->validate(
+            [
+                'name' => 'required|max:255',
+                'email' => 'required|email|unique:users',
+                'password' => 'required|confirmed',
+            ]
+        );
+
+        $user = User::create($fields);
+
+        $token = $user->createToken($user->name);
+
+        return response()->json([
+            'user' => $user,
+            'token' => $token->plainTextToken,
+        ]);
     }
 
-    public function login()
+    public function login(Request $request)
     {
-        return 'login';
+        $request->validate(
+            [
+                'email' => 'required|email|exists:users',
+                'password' => 'required',
+            ]
+        );
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user && !Hash::check($request->passowrd, $user->password)) {
+            return response()->json(['message' => 'Invalid Credential!']);
+        }
+
+        // create token
+        $token = $user->createToken($user->name);
+
+        return response()->json([
+            'user' => $user,
+            'token' => $token->plainTextToken,
+        ]);
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
-        return 'logout';
+        $request->user()->tokens()->delete();
+
+        return response()->json(['message' => 'Logged out!']);
     }
 }
