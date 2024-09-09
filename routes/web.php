@@ -40,7 +40,7 @@ Route::get('/admin', [DashboardController::class, 'index'])->middleware(['auth',
 //     return 'Article List';
 // });
 
-// // Static route
+// Static route
 // Route::get('/articles/detail', function () {
 //     return 'Article Detail';
 // })->name('articles.detail'); // Route name
@@ -57,10 +57,15 @@ Route::get('/admin', [DashboardController::class, 'index'])->middleware(['auth',
 //     return "Student Id - $id";
 // });
 
-// // Redirect
+// Redirect
+// use Illuminate\Support\Facades\Redirect;
 // Route::get('/articles/more', function() {
-//     // return redirect('/articles/detail');
-//     return redirect()->route('articles.detail');
+    // return redirect('/articles/detail');
+    // return redirect()->route('articles.detail');
+    // return redirect()->to('/articles/detail');
+    // return Redirect()->to('/articles/detail');
+    // return Redirect('/articles/detail');
+    // return to_route('articles.detail');
 // });
 
 // Basic

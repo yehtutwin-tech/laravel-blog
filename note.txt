@@ -77,11 +77,15 @@ Day 4
     - php artisan make:middleware Admin
     (tbc => spartie - https://spatie.be/)
 
+Day 5
 15. Schedule Command
     -
 
 16. Test Case
     - Unit/Feature/Integration
+
+17. jQuery/Ajax
+    -
 
 
 
