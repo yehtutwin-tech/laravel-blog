@@ -32,6 +32,13 @@
                 </select>
             </div>
             <div class="mb-2">
+                <select class="form-select" size="5" multiple name="tags[]">
+                    @foreach($tags as $tag)
+                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="mb-2">
                 <label>Image</label>
                 <input type="file" name="image" class="form-control" accept="image/*" />
             </div>

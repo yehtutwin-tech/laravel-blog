@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -54,8 +55,9 @@ class ArticleController extends Controller
         //     ['id' => 2, 'name' => 'cat2'],
         // ];
         $categories = Category::all();
+        $tags = Tag::all();
 
-        return view('articles.create', compact('categories'));
+        return view('articles.create', compact('categories', 'tags'));
     }
 
     public function store()
@@ -92,6 +94,7 @@ class ArticleController extends Controller
         }
 
         $article->save();
+        $article->tags()->attach(request()->tags);
 
         return redirect('articles')
             ->with('info', 'An article has been created!');
@@ -102,10 +105,11 @@ class ArticleController extends Controller
         $article = Article::find($id);
 
         $categories = Category::all();
+        $tags = Tag::all();
 
         return view(
             'articles.edit',
-            compact('article', 'categories'),
+            compact('article', 'categories', 'tags'),
         );
     }
 
@@ -143,6 +147,7 @@ class ArticleController extends Controller
         }
 
         $article->save();
+        $article->tags()->sync(request()->tags);
 
         return redirect('articles')
             ->with('info', 'An article has been updated!');
@@ -151,6 +156,7 @@ class ArticleController extends Controller
     public function delete($id)
     {
         $article = Article::find($id);
+        $article->tags()->detach();
         $article->delete();
 
         return redirect('articles')
