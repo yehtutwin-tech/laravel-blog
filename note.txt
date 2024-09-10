@@ -79,7 +79,17 @@ Day 4
 
 Day 5
 15. Schedule Command
-    -
+    - php artisan make:command SendEmails
+    - php artisan emails:send
+    - php artisan make:mail EmailVerified
+    - php artisan schedule:list
+    - php artisan schedule:run
+    - * * * * * php /path_to_your_project/artisan schedule:run >> /dev/null 2&1
+    - * 1 * * 1 php /path_to_your_project/artisan emails:send >> /dev/null 2&1
+    (ref: https://crontab.guru)
+
+16. Loggin
+    - LOG_CHANNEL=daily
 
 16. Test Case
     - Unit/Feature/Integration
@@ -87,14 +97,15 @@ Day 5
 17. jQuery/Ajax
     -
 
+18. Admin Dashboard
+    -
+
 
 
 API
-- Sanctum
 - Passport
 
 Authentication
-- multi role
 - spartie
 
 Dashboard
@@ -103,12 +114,6 @@ Dashboard
 
 Command
 - cron
-
-File storage
--
-
-Middleware
--
 
 Test
 - unit
