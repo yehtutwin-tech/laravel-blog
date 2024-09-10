@@ -88,8 +88,10 @@ Day 5
     - * 1 * * 1 php /path_to_your_project/artisan emails:send >> /dev/null 2&1
     (ref: https://crontab.guru)
 
-16. Loggin
+- Logging
     - LOG_CHANNEL=daily
+- File Downlaod
+- Redirect
 
 16. Test Case
     - Unit/Feature/Integration
@@ -124,4 +126,7 @@ Design pattern
 - Repository
 
 ReponseCollection
+-
+
+Collection
 -

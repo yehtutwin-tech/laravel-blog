@@ -10,6 +10,7 @@ use App\Http\Controllers\CommentController;
 
 // Admin
 use App\Http\Controllers\Admin\DashboardController;
+use Illuminate\Support\Facades\Storage;
 
 Route::get('/', function () {
     // return view('welcome');
@@ -35,6 +36,12 @@ Route::get('/home', [HomeController::class, 'index'])->name('user.dashboard');
 
 Route::get('/admin', [DashboardController::class, 'index'])->middleware(['auth', 'admin'])->name('admin.dashboard');
 
+// file download
+Route::get('img_download', function() {
+    // storage/articles/[file....]
+    return Storage::disk('public')->download('articles/1725950802.jpg');
+});
+
 // // Static route
 // Route::get('/articles', function () {
 //     return 'Article List';
@@ -45,11 +52,11 @@ Route::get('/admin', [DashboardController::class, 'index'])->middleware(['auth',
 //     return 'Article Detail';
 // })->name('articles.detail'); // Route name
 
-// // Dynamic route
+// Dynamic route
 // Route::get('/articles/detail/{id}', function ($id) {
 //     // return "Article Detail - $id";
 //     return 'Article Detail - '.$id;
-// });
+// })->name('articles.detail.dynamic');
 
 // // Dynamic route
 // // students?id=1
@@ -60,12 +67,15 @@ Route::get('/admin', [DashboardController::class, 'index'])->middleware(['auth',
 // Redirect
 // use Illuminate\Support\Facades\Redirect;
 // Route::get('/articles/more', function() {
-    // return redirect('/articles/detail');
-    // return redirect()->route('articles.detail');
-    // return redirect()->to('/articles/detail');
-    // return Redirect()->to('/articles/detail');
-    // return Redirect('/articles/detail');
-    // return to_route('articles.detail');
+//     // return redirect('/articles/detail');
+//     // return redirect()->to('/articles/detail');
+//     // return Redirect('/articles/detail');
+//     // return Redirect()->to('/articles/detail');
+//     // return redirect()->route('articles.detail');
+//     // return to_route('articles.detail');
+//     return redirect()->route('articles.detail.dynamic', ['id' => 5]);
+//     // query string
+//     // return to_route('articles.detail', ['q' => 'html']);
 // });
 
 // Basic
