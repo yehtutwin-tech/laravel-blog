@@ -45,4 +45,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function getEmailDomain()
+    {
+        // koko@gmail.com => gmail.com
+        // mgmg@itsec.com => itsec.com
+        return substr(strchr($this->email, '@'), 1);
+
+        // test case failed
+        // return substr(strchr($this->email, '@'), 2);
+    }
 }

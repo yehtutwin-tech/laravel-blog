@@ -1,6 +1,7 @@
 <?php
 
 use App\Console\Commands\SendEmails;
+use App\Services\PostService;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Log;
@@ -17,3 +18,9 @@ Artisan::command('greet {name}', function ($name) {
 });
 
 Schedule::command(SendEmails::class)->hourly();
+
+Artisan::command('post:get {id}', function ($id) {
+    $post = new PostService();
+    $json = $post->getPost($id);
+    var_dump($json);
+});

@@ -94,7 +94,15 @@ Day 5
 - Redirect
 
 16. Test Case
-    - Unit/Feature/Integration
+    - Unit (partial)
+    - php artisan make:test UserTest --unit
+    - php artisan test
+    - php artisan test --testsuit=Unit
+    - php artisan test tests/Unit/UserTest.php
+    - php artisan test --filter test_example1 tests/Unit/UserTest.php
+    - Feature
+    - php artisan make:test UserTest
+    - Integration
 
 17. jQuery/Ajax
     -
@@ -124,9 +132,6 @@ Test
 
 Design pattern
 - Repository
-
-ReponseCollection
--
 
 Collection
 -

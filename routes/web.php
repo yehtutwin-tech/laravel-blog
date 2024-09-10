@@ -17,6 +17,12 @@ Route::get('/', function () {
     return redirect('/articles');
 });
 
+use App\Models\User;
+Route::get('/users/{id}', function($id) {
+    $user = User::find($id);
+    return $user->getEmailDomain();
+});
+
 Route::get('/articles', [ArticleController::class, 'index']);
 Route::get('/articles/create', [ArticleController::class, 'create']);
 Route::post('/articles/store', [ArticleController::class, 'store']);
