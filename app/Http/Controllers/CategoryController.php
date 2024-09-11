@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -11,7 +12,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::paginate(10);
+        return view('categories.index', compact('categories'));
     }
 
     /**
@@ -27,7 +29,27 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validator = validator(
+            request()->all(),
+            [
+                'name' => 'required|max:255',
+            ],
+        );
+
+        if ($validator->fails()) {
+            return response()->json(
+                ['errors' => $validator->errors()],
+                200,
+            );
+        }
+
+        // create new category
+        $category = new Category();
+        $category->name = request()->name;
+        $category->save();
+
+        return response()->json($category, 201);
     }
 
     /**

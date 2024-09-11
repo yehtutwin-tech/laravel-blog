@@ -105,7 +105,6 @@ Day 5
     - Integration
 
 17. jQuery/Ajax
-    -
 
 18. Admin Dashboard
     -

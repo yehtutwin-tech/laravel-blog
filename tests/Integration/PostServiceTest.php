@@ -13,7 +13,7 @@ class PostServiceTest extends TestCase
     public function test_successful_post_api_call()
     {
         Http::fake([
-            'jssonplaceholder.typicode.com/posts/*' => Http::response([
+            'jsonplaceholder.typicode.com/posts/*' => Http::response([
                 'userId' => 1,
                 'id' => 1,
                 'title' => 'Sample Post Title',
@@ -33,7 +33,7 @@ class PostServiceTest extends TestCase
     public function test_failed_post_api_call()
     {
         Http::fake([
-            'jssonplaceholder.typicode.com/posts/*' => Http::response([], 404)
+            'jsonplaceholder.typicode.com/posts/*' => Http::response([], 404)
         ]);
 
         $postService = new PostService();

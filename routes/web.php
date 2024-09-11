@@ -35,6 +35,8 @@ Route::post('/comments/store', [CommentController::class, 'store']);
 Route::get('/comments/delete/{id}', [CommentController::class, 'delete']);
 
 Route::resource('categories', CategoryController::class);
+// Route::get('categories', [CategoryController::class, 'index']);
+// Route::post('categories', [CategoryController::class, 'store']);
 
 Auth::routes();
 
