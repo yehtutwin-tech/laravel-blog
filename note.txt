@@ -104,9 +104,26 @@ Day 5
     - php artisan make:test UserTest
     - Integration
 
+Day 6
 17. jQuery/Ajax
 
-18. Admin Dashboard
+Day 7
+18. Many to Many
+    - php artisan make:migration create_tags_table
+    - php artisan make:migration create_article_tag_table --create=article_tag
+    - php artisan make:factory TagFactory
+    - php artisan make:factory ArticleTagFactory
+    - php artisan make:model Tag
+    - php artisan make:model ArticleTag
+    - protected $table = 'article_tag';
+    - public $timestamps = false;
+
+youtube -> php framework mini project
+
+18. Components
+    -
+
+19. Admin Dashboard
     -
 
 
@@ -121,16 +138,10 @@ Dashboard
 - Customize
 - Filament
 
-Command
-- cron
-
-Test
-- unit
-- feature
-- integration
-
 Design pattern
 - Repository
 
 Collection
 -
+
+Events/Listeners

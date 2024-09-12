@@ -9,6 +9,7 @@
                 </h5>
                 <div class="card-subtitle mb-2 text-muted small">
                     {{ $article->created_at->diffForHumans() }}
+                    (Tags: {{ $article->tags->pluck('name')->implode(', ') }})
                 </div>
                 <p class="card-text">
                     {{ $article->body }}

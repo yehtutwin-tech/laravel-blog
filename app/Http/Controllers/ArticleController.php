@@ -43,6 +43,7 @@ class ArticleController extends Controller
         $article = Article::find($id);
 
         // dd($article->comments);
+        // dd($article->tags->pluck('name')->implode(', '));
 
         return view('articles.show', compact('article'));
     }
