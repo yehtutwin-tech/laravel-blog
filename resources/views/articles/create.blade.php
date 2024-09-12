@@ -32,6 +32,16 @@
                 </select>
             </div>
             <div class="mb-2">
+                <label>Tag</label>
+                <select class="form-control" size="5" multiple name="tag_ids[]">
+                    @foreach($tags as $tag)
+                        <option value="{{ $tag['id'] }}">
+                            {{ $tag['name'] }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="mb-2">
                 <label>Image</label>
                 <input type="file" name="image" class="form-control" accept="image/*" />
             </div>
