@@ -120,10 +120,20 @@ Day 7
 
 youtube -> php framework mini project
 
-18. Components
-    -
+19. Components
+    - # static data passing
+    - php artisan make:component Heading
+    - # dynamic data passing
+    - php artisan make:component Article/ArticleItem
+    - # slot
+    - npm i bootstrap-icons
+    - # attributes merging
+    - # components without class
+    - # props
+    - # components only class (inline)
+    - php artisan make:component Form/Textarea --inline
 
-19. Admin Dashboard
+20. Admin Dashboard
     -
 
 

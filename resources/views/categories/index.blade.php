@@ -2,6 +2,8 @@
 
 @section('content')
     <div class="container">
+        <x-heading title="Category List" class="ps-5" />
+
         @if (session('info'))
             <div class="alert alert-info">
                 {{ session('info') }}

@@ -15,11 +15,16 @@
             @csrf
             <div class="mb-2">
                 <label>Title</label>
-                <input type="text" name="title" class="form-control" value="{{ old('title') }}" required />
+                <x-forms.text-input
+                    name="title"
+                    placeholder="Title..."
+                    value="{{ old('title') }}"
+                    required="required"
+                />
             </div>
             <div class="mb-2">
                 <label>Body</label>
-                <textarea name="body" class="form-control" required>{{ old('body') }}</textarea>
+                <x-form.textarea />
             </div>
             <div class="mb-2">
                 <label>Category</label>
