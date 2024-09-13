@@ -133,11 +133,13 @@ youtube -> php framework mini project
     - # components only class (inline)
     - php artisan make:component Form/Textarea --inline
 
+Day 8
 20. Admin Dashboard
     -
 
 
 *** Code Review
+*** DB Transactions
 
 
 API
@@ -157,3 +159,5 @@ Collection
 -
 
 Events/Listeners
+
+Try / Catch
