@@ -49,30 +49,34 @@
         </div>
         {{ $categories->links() }}
     </div>
+@endsection
 
-    <script>
-        $(document).ready(function() {
-            $('#ajax-form').submit(function(e) {
-                e.preventDefault();
+@section('script')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-                const url = $(this).attr('action');
-                const formData = new FormData(this);
+<script>
+    $(document).ready(function() {
+        $('#ajax-form').submit(function(e) {
+            e.preventDefault();
 
-                $.ajax({
-                    type: 'POST',
-                    url: url,
-                    data: formData,
-                    contentType: false,
-                    processData: false,
-                    success: (response) => {
-                        console.log(response);
-                        location.reload();
-                    },
-                    error: function(response) {
-                        console.log(response);
-                    }
-                });
+            const url = $(this).attr('action');
+            const formData = new FormData(this);
+
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: (response) => {
+                    console.log(response);
+                    location.reload();
+                },
+                error: function(response) {
+                    console.log(response);
+                }
             });
-        })
-    </script>
+        });
+    })
+</script>
 @endsection

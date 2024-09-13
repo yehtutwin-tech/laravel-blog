@@ -50,6 +50,10 @@ Route::get('img_download', function() {
     return Storage::disk('public')->download('articles/1725950802.jpg');
 });
 
+// Livewire
+use App\Livewire\Tag;
+Route::get('tags', Tag::class);
+
 // // Static route
 // Route::get('/articles', function () {
 //     return 'Article List';
