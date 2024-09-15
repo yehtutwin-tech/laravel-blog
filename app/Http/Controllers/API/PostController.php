@@ -8,9 +8,15 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum')->except('index', 'show');
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -31,7 +37,8 @@ class PostController extends Controller
             'body' => 'required',
         ]);
 
-        $post = Post::create($fields);
+        // $post = Post::create($fields);
+        $post = $request->user()->posts()->create($fields);
 
         return response()->json($post, 201);
     }
@@ -59,6 +66,8 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        Gate::authorize('modify', $post);
+
         $fields = $request->validate([
             'title' => 'required|max:255',
             'body' => 'required',
@@ -74,6 +83,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        Gate::authorize('modify', $post);
+
         $post->delete();
 
         return response()->json(['message' => 'Deleted successful']);
