@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NotificationEvent;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -48,6 +49,8 @@ class CategoryController extends Controller
         $category = new Category();
         $category->name = request()->name;
         $category->save();
+
+        broadcast(new NotificationEvent('New category created!'));
 
         return response()->json($category, 201);
     }

@@ -21,7 +21,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+            <div class="container position-relative">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
@@ -76,6 +76,7 @@
                         @endguest
                     </ul>
                 </div>
+                <div id="notification-area" class="position-absolute end-0 z-1" style="top: 50px"></div>
             </div>
         </nav>
 
@@ -83,5 +84,46 @@
             @yield('content')
         </main>
     </div>
+
+    <script>
+        const notificationArea = document.getElementById('notification-area');
+        const audio = document.createElement('audio');
+        audio.src = 'noti.mp3';
+        notificationArea.appendChild(audio);
+
+        function playAudio() {
+            audio.play();
+        }
+
+        function pauseAudio() {
+            audio.pause();
+        }
+
+        function showNotification(message) {
+            // Create a new div element
+            const notification = document.createElement('div');
+            notification.className = 'alert alert-info';  // Add Bootstrap classes
+            notification.textContent = message;
+
+            // Append the notification to the notification-area div
+            notificationArea.appendChild(notification);
+
+            // Set a timeout to remove the notification after 3 seconds
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);  // 3000 milliseconds = 3 seconds
+        }
+
+        document.addEventListener("DOMContentLoaded", function(event) {
+            @auth()
+            window.Echo.private('admin.notifications')
+                .listen('NotificationEvent', async (e) => {
+                    pauseAudio();
+                    showNotification(e.message);
+                    playAudio();
+                });
+            @endauth()
+        });
+    </script>
 </body>
 </html>

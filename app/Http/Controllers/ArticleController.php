@@ -2,6 +2,7 @@
 // app/Http/Controllers/ArticleController.php
 namespace App\Http\Controllers;
 
+use App\Events\NotificationEvent;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Tag;
@@ -98,6 +99,8 @@ class ArticleController extends Controller
 
         $article->save();
         $article->tags()->attach(request()->tag_ids);
+
+        broadcast(new NotificationEvent('New article created!'));
 
         return redirect('articles')
             ->with('info', 'An article has been created!');
