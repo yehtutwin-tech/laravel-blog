@@ -149,6 +149,28 @@ Day 8
     - php artisan queue:listen
 
 
+ကိုယ်စက်ထဲ clone ပြီးရင် အောက်ကအဆင့်တွေလိုက်လုပ်ဖို့လိုပါတယ်
+.env.example ကို .env ဆိုတဲ့ file ပွား(duplicate)ယူလိုက်ပါ
+ပြီးတော့ database connection ပြောင်းပါ
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=blog
+DB_USERNAME=root
+DB_PASSWORD=
+
+အောက်က command တွေ run ပါ
+php artisan key:generate
+php artisan migrate
+php artisan db:seed
+php artisan serve
+
+node သွင်းရန်လိုအပ်ပါသည်
+https://nodejs.org/en/download/package-manager
+npm install
+npm run dev (npm run build)
+
+
 
 *** Code Review
 *** DB Transactions
