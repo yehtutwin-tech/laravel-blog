@@ -134,8 +134,20 @@ youtube -> php framework mini project
     - php artisan make:component Form/Textarea --inline
 
 Day 8
-20. Admin Dashboard
-    -
+20. Laravel Filament (Admin Dashboard)
+
+21. Project (Reverb)
+    - php artisan install:broadcasting
+    - composer require laravel/reverb
+    - php artisan reverb:install
+    - php artisan make:event NotificationEvent
+
+    // Command
+    - php artisan serve
+    - npm run dev (npm run build)
+    - php artisan reverb:start
+    - php artisan queue:listen
+
 
 
 *** Code Review
@@ -150,7 +162,6 @@ Authentication
 
 Dashboard
 - Customize
-- Filament
 
 Design pattern
 - Repository

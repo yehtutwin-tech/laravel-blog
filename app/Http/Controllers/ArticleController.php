@@ -2,6 +2,7 @@
 // app/Http/Controllers/ArticleController.php
 namespace App\Http\Controllers;
 
+use App\Events\NotificationEvent;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Tag;
@@ -99,6 +100,8 @@ class ArticleController extends Controller
         $article->save();
         $article->tags()->attach(request()->tag_ids);
 
+        broadcast(new NotificationEvent('New article created!'));
+
         return redirect('articles')
             ->with('info', 'An article has been created!');
     }
@@ -152,6 +155,8 @@ class ArticleController extends Controller
         $article->save();
         $article->tags()->sync(request()->tag_ids);
 
+        broadcast(new NotificationEvent('Article updated!'));
+
         return redirect('articles')
             ->with('info', 'An article has been updated!');
     }
@@ -161,6 +166,8 @@ class ArticleController extends Controller
         $article = Article::find($id);
         // $article->tags()->detach();
         $article->delete();
+
+        broadcast(new NotificationEvent('Article deleted!'));
 
         return redirect('articles')
             ->with('info', 'An article has been deleted!');

@@ -21,7 +21,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+            <div class="container position-relative">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
@@ -76,6 +76,7 @@
                         @endguest
                     </ul>
                 </div>
+                <div id="notification-area" class="position-absolute end-0 z-1" style="top: 50px"></div>
             </div>
         </nav>
 
@@ -83,5 +84,45 @@
             @yield('content')
         </main>
     </div>
+    <script>
+        const notificationArea = document.getElementById('notification-area');
+
+        const audio = document.createElement('audio');
+        audio.src = 'noti.mp3';
+        notificationArea.appendChild(audio);
+
+        function playAudio() {
+            audio.play();
+        }
+
+        function pauseAudio() {
+            audio.pause();
+        }
+
+        function showNotification(message) {
+            const notifcation = document.createElement('div');
+            notifcation.className = 'alert alert-info';
+            notifcation.textContent = message;
+
+            notificationArea.appendChild(notifcation);
+
+            setTimeout(() => {
+                notifcation.remove();
+            }, 3000);
+        }
+        // showNotification('New category created');
+
+        document.addEventListener('DOMContentLoaded', function(event) {
+            @auth
+                window.Echo.private('admin.notifications')
+                    .listen('NotificationEvent', async (e) => {
+                        // console.log(e.message);
+                        pauseAudio();
+                        showNotification(e.message);
+                        playAudio();
+                    });
+            @endauth
+        });
+    </script>
 </body>
 </html>
