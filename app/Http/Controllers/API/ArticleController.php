@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ArticleCollection;
+use App\Http\Resources\ArticleResource;
 use App\Models\Article;
 use Illuminate\Http\Request;
 
@@ -13,9 +15,13 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::all();
+        $articles = Article::paginate(10);
 
-        return response()->json($articles, 200);
+        return response()->json(
+            // $articles,
+            new ArticleCollection($articles),
+            200
+        );
     }
 
     /**
@@ -63,7 +69,10 @@ class ArticleController extends Controller
             );
         }
 
-        return response()->json($article, 200);
+        return response()->json(
+            new ArticleResource($article),
+            200
+        );
     }
 
     /**
