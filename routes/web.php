@@ -30,6 +30,7 @@ Route::get('/articles/{id}/edit', [ArticleController::class, 'edit']);
 Route::put('/articles/{id}', [ArticleController::class, 'update']);
 Route::get('/articles/{id}', [ArticleController::class, 'show']);
 Route::delete('/articles/{id}', [ArticleController::class, 'delete']);
+Route::get('/article_restore/{id}', [ArticleController::class, 'restore']); // restore route
 
 Route::post('/comments/store', [CommentController::class, 'store']);
 Route::get('/comments/delete/{id}', [CommentController::class, 'delete']);

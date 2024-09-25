@@ -13,7 +13,18 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        // $categories = Category::all();
+
+        // $categories = Category::select('id', 'name')
+        //     ->get();
+
+        // $categories = Category::with('articles:id,category_id,title')
+        //     ->select('id', 'name')
+        //     ->get();
+
+        $categories = Category::with('latestArticle')
+            ->select('id', 'name')
+            ->get();
 
         return response()->json($categories, 200);
     }

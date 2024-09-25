@@ -148,6 +148,20 @@ Day 8
     - php artisan reverb:start
     - php artisan queue:listen
 
+Day 9
+22. Resource Collection
+    - php artisan make:resource ArticleResource
+    - php artisan make:resource ArticleCollection
+
+23. Soft Delete
+    - php artisan make:migration modify_articles_table
+    - $table->softDeletes();
+    - $table->dropSoftDeletes();
+    - $articles = Article::withTrashed()->paginate(2);
+
+24. DB Transactions
+25. Try...Catch
+
 
 ကိုယ်စက်ထဲ clone ပြီးရင် အောက်ကအဆင့်တွေလိုက်လုပ်ဖို့လိုပါတယ်
 .env.example ကို .env ဆိုတဲ့ file ပွား(duplicate)ယူလိုက်ပါ

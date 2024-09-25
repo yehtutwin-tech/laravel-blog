@@ -16,10 +16,14 @@ class ArticleFactory extends Factory
      */
     public function definition(): array
     {
+        $image = $this->faker->image('public/storage/articles', 400, 400, 'articles');
+        $filename = str_replace('public/storage/articles', '', $image);
+
         return [
             'title' => $this->faker->sentence,
             'body' => $this->faker->paragraph,
             'category_id' => rand(1, 5),
+            'image' => $filename,
         ];
     }
 }

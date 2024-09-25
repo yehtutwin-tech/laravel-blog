@@ -7,6 +7,7 @@ use App\Models\Article;
 use App\Models\Category;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ArticleController extends Controller
 {
@@ -171,5 +172,17 @@ class ArticleController extends Controller
 
         return redirect('articles')
             ->with('info', 'An article has been deleted!');
+    }
+
+    public function restore($id)
+    {
+        $article = Article::withTrashed()->find($id);
+        // $article->tags()->detach();
+        $article->restore();
+
+        broadcast(new NotificationEvent('An article has been restored!'));
+
+        return redirect('articles')
+            ->with('info', 'An article has been restored!');
     }
 }

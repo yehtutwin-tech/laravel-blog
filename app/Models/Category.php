@@ -13,4 +13,11 @@ class Category extends Model
     {
         return $this->hasMany(Article::class);
     }
+
+    public function latestArticle()
+    {
+        return $this->hasOne(Article::class)
+            ->select('id', 'category_id', 'title')
+            ->orderBy('id', 'desc');
+    }
 }
