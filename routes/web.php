@@ -23,8 +23,10 @@ Route::get('/users/{id}', function($id) {
     return $user->getEmailDomain();
 });
 
-Route::get('/articles', [ArticleController::class, 'index']);
-Route::get('/articles/create', [ArticleController::class, 'create']);
+Route::get('/articles', [ArticleController::class, 'index'])
+    ->name('articles.index');
+Route::get('/articles/create', [ArticleController::class, 'create'])
+    ->name('articles.create');
 Route::post('/articles/store', [ArticleController::class, 'store']);
 Route::get('/articles/{id}/edit', [ArticleController::class, 'edit']);
 Route::put('/articles/{id}', [ArticleController::class, 'update']);

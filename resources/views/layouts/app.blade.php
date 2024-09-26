@@ -32,11 +32,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li>
-                            <a href="{{ url('articles') }}" class="btn btn-link">Articles</a>
+                        <li class="nav-item">
+                            <a href="{{ url('articles') }}" class="nav-link {{ Route::is('articles.*') ? 'active' : '' }}">Articles</a>
                         </li>
-                        <li>
-                            <a href="{{ url('categories') }}" class="btn btn-link">Categories</a>
+                        <li class="nav-item">
+                            <a href="{{ url('categories') }}" class="nav-link {{ Route::is('categories.*') ? 'active' : '' }}">Categories</a>
                         </li>
                     </ul>
 

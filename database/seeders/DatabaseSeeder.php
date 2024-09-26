@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Tag;
 use App\Models\User;
+use App\RoleEnum;
 use Database\Factories\ArticleTagFactory;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -23,11 +24,13 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->create([
             'name' => 'Ko Ko',
+            'role' => RoleEnum::USER,
             'email' => 'koko@example.com',
         ]);
 
         User::factory()->create([
             'name' => 'Mg Mg',
+            'role' => RoleEnum::ADMIN,
             'email' => 'mgmg@example.com',
         ]);
 

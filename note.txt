@@ -106,9 +106,10 @@ Day 5
 
 Day 6
 17. jQuery/Ajax
+    - Category Module
 
 Day 7
-18. Many to Many
+18. Many to Many Relationship
     - php artisan make:migration create_tags_table
     - php artisan make:migration create_article_tag_table --create=article_tag
     - php artisan make:factory TagFactory
@@ -136,7 +137,7 @@ youtube -> php framework mini project
 Day 8
 20. Laravel Filament (Admin Dashboard)
 
-21. Project (Reverb)
+21. Project (Reverb, Pusher)
     - php artisan install:broadcasting
     - composer require laravel/reverb
     - php artisan reverb:install
@@ -171,7 +172,9 @@ Day 10
 27. Debugging
     - composer require barryvdh/laravel-debugbar --dev
 
+Day 11
 28. Code Review
+    -
 
 
 

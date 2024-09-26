@@ -16,7 +16,7 @@ class ArticleFactory extends Factory
      */
     public function definition(): array
     {
-        $image = $this->faker->image('public/storage/articles', 400, 400, 'articles');
+        $image = $this->faker->image('public/storage/articles', 400, 400, 'animals');
         $filename = str_replace('public/storage/articles', '', $image);
 
         return [
