@@ -15,6 +15,8 @@ class CategoryController extends Controller
     {
         // $categories = Category::all();
 
+        // $categories = Category::withCount('articles')->get();
+
         // $categories = Category::select('id', 'name')
         //     ->get();
 

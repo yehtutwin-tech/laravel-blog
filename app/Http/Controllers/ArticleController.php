@@ -25,7 +25,7 @@ class ArticleController extends Controller
         //     ['id' => 3, 'title' => 'Third Article'],
         // ];
 
-        $articles = Article::latest()->paginate(2);
+        $articles = Article::with('tags')->latest()->paginate(20);
 
         $foo = 'bar';
 

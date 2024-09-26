@@ -162,6 +162,18 @@ Day 9
 24. DB Transactions
 25. Try...Catch
 
+Day 10
+26. Others
+    - php artisan migrate:status
+    - php artisan migrate:rollback --step=2
+    - php artisan schema:dump
+
+27. Debugging
+    - composer require barryvdh/laravel-debugbar --dev
+
+28. Code Review
+
+
 
 ကိုယ်စက်ထဲ clone ပြီးရင် အောက်ကအဆင့်တွေလိုက်လုပ်ဖို့လိုပါတယ်
 .env.example ကို .env ဆိုတဲ့ file ပွား(duplicate)ယူလိုက်ပါ
@@ -184,28 +196,5 @@ https://nodejs.org/en/download/package-manager
 npm install
 npm run dev (npm run build)
 
-
-
-*** Code Review
-*** DB Transactions
-*** article api with tags in comma separated
-
-
-API
-- Passport
-
-Authentication
-- spartie
-
-Dashboard
-- Customize
-
-Design pattern
-- Repository
-
-Collection
--
-
-Events/Listeners
-
-Try / Catch
+image
+user to see registered
