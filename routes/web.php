@@ -15,6 +15,14 @@ use Illuminate\Support\Facades\Storage;
 Route::get('/', function () {
     // return view('welcome');
     return redirect('/articles');
+
+    // if (auth()->user->role == 'admin' && auth()->user->role == 'user') {
+    //     // do action
+    // }
+
+    // if (in_array(auth()->user->role, ['admin', 'user'])) {
+    //     // do action
+    // }
 });
 
 use App\Models\User;

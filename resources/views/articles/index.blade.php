@@ -18,9 +18,11 @@
             </div>
         @endif
 
-        @foreach ($articles as $article)
+        @forelse ($articles as $article)
             <x-article.article-item :article="$article" />
-        @endforeach
+        @empty
+            <p>No records!</p>
+        @endforelse
 
         {{ $articles->links() }}
     </div>
