@@ -173,7 +173,13 @@ Day 10
     - composer require barryvdh/laravel-debugbar --dev
 
 Day 11
-28. Code Review
+29. Enum
+    - php artisan make:enum RoleEnum
+    - php artisan make:seeder UserSeeder
+    - php artisan make:seeder ArticleSeeder
+    - $this->call([ UserSeeder::class ]);
+
+29. Code Review
     -
 
 

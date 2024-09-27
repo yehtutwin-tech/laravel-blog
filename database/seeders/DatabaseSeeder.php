@@ -2,9 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Article;
 use App\Models\ArticleTag;
-use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Tag;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -19,10 +17,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
+            ArticleSeeder::class,
+            CategorySeeder::class,
         ]);
 
-        Article::factory(20)->create();
-        Category::factory(5)->create();
         Comment::factory(50)->create();
         Tag::factory(10)->create();
         ArticleTag::factory(50)->create();
