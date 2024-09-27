@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,10 +17,12 @@ class CommentFactory extends Factory
      */
     public function definition(): array
     {
+        $users = User::pluck('id');
+
         return [
             'content' => $this->faker->paragraph,
             'article_id' => rand(1, 20),
-            'user_id' => rand(1, 2),
+            'user_id' => $users->random(),
         ];
     }
 }
